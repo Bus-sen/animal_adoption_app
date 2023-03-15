@@ -34,7 +34,7 @@ class AppTextField extends StatelessWidget {
             //hintText
               hintText: hintText,
               //prefixIcon
-              prefixIcon: Icon(Icons.email, color: Colors.yellow),
+              prefixIcon: Icon(icon, color: Colors.deepOrangeAccent),
               //focusedBorder
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(Dimensions.radius30),
