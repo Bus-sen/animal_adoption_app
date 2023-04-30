@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class BigText extends StatelessWidget {
-  final Color? color;
+   Color? color;
   final String text;
   double size;
   TextOverflow overFlow;
-  BigText({Key? key, required this.color,
+  BigText({Key? key, this.color = Colors.black,
     required this.text,
     this.size= 20,
     this.overFlow=TextOverflow.ellipsis
@@ -15,6 +16,7 @@ class BigText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      maxLines: 1,
       overflow: overFlow,
       style: TextStyle(
         fontFamily: 'Roboto ',
