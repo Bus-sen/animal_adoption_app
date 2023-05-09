@@ -26,13 +26,13 @@ class SignUpPage extends StatelessWidget {
             SizedBox(height: Dimensions.screenHeight*0.05,),
             Container(
               height: Dimensions.screenHeight*0.25,
-              child: Center(
+              child: const Center(
                 child: CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 80,
-                    /*backgroundImage: AssetImage(      /*  LOGO Gerek  */
-                        "assets/..."
-                    )*/
+                    backgroundImage: AssetImage(    /*  LOGO  */
+                      "assets/profile.png"
+                    )
                 ),
               ),
             ),
