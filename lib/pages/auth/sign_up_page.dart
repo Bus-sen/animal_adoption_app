@@ -1,4 +1,5 @@
 import 'package:animal_app/pages/auth/sign_in_page.dart';
+import 'package:animal_app/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +63,7 @@ class SignUpPage extends StatelessWidget {
               height: Dimensions.screenHeight/13,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimensions.radius30),
-                color: Colors.lightBlue
+                color: AppColors.mainColor
               ),
               child: Center(
                 child: BigText(

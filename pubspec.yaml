@@ -32,7 +32,9 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.6.5
+  dots_indicator: ^2.1.0
   flutter_font_picker: ^1.2.0 #istediğin fontu seçme?
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -64,6 +66,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
       - assets/profile.png
+      - assets/dog.png
   #   - images/a_dot_ham.jpeg
 
 
