@@ -32,6 +32,8 @@ class Dimensions {
   static double listViewImgSize = screenWidth/3.25;
   static double listViewTextContSize = screenWidth/3.9;
 
+  static double popularAdvertsImgSize = screenHeight/2.41;
+
   static double bottomHeightBar = screenHeight/7.03;
 
   static double splashImg = screenHeight/3.38;
