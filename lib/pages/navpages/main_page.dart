@@ -1,6 +1,7 @@
-import 'package:animal_app/pages/home/home_page.dart';
-import 'package:animal_app/pages/navpages/bar_item_page.dart';
-import 'package:animal_app/pages/navpages/my_profile_page.dart';
+import 'package:animal_app/pages/account/account_page.dart';
+import 'package:animal_app/pages/navpages/favourite_page.dart';
+import 'package:animal_app/pages/navpages/request_page.dart';
+import 'package:animal_app/pages/home/main_pet_page.dart';
 import 'package:animal_app/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +15,10 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   List pages = [
-    HomePage(),
-    BarItemPage(),
-    MyProfilePage(),
+    MainPetPage(), //HomePage vardı
+    RequestPage(),
+    FavouritePage(),
+    AccountPage(),
   ];
   int currentIndex = 0;
   void onTap(int index){
@@ -38,9 +40,10 @@ class _MainPageState extends State<MainPage> {
         showUnselectedLabels: false,
         elevation: 0,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Anasayfa"),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favoriler"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil"),
+          BottomNavigationBarItem(icon: Icon(Icons.home, size: 26), label: "Anasayfa"),
+          BottomNavigationBarItem(icon: Icon(Icons.add_circle_sharp, size: 26), label: "İstekler"),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite, size: 26), label: "Favoriler"),
+          BottomNavigationBarItem(icon: Icon(Icons.person, size: 26), label: "Profil"),
         ],
       ),
     );
