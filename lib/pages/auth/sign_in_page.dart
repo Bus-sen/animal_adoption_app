@@ -76,7 +76,7 @@ class SignInPage extends StatelessWidget {
                   child: Center(
                     child: BigText(
                       text: "Giriş Yap",
-                      size: Dimensions.font20 + Dimensions.font20/2, color: Colors.white,
+                      size: Dimensions.font20 + Dimensions.font20/2, color: Colors.black,
                     ),
                   ),
                 ),

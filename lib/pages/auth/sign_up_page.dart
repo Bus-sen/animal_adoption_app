@@ -68,7 +68,7 @@ class SignUpPage extends StatelessWidget {
               child: Center(
                 child: BigText(
                   text: "Kayıt Ol",
-                  size: Dimensions.font20 + Dimensions.font20/2, color: Colors.white,
+                  size: Dimensions.font20 + Dimensions.font20/2, color: Colors.black,
                 ),
               ),
             ),
