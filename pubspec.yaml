@@ -34,6 +34,15 @@ dependencies:
   get: ^4.6.5
   dots_indicator: ^2.1.0
   flutter_font_picker: ^1.2.0 #istediğin fontu seçme?
+  firebase_auth: ^4.6.1
+  firebase_core: ^2.13.0
+  cloud_firestore: ^4.5.3
+  firebase_storage: ^11.2.4
+  fluttertoast: ^8.2.2
+  carousel_slider: ^4.2.1
+  font_awesome_flutter: ^10.4.0
+  file_picker: ^5.3.2
+  image_picker: ^1.0.0
 
 
 
@@ -67,6 +76,12 @@ flutter:
   assets:
       - assets/profile.png
       - assets/dog.png
+      - assets/cat.jpg
+      - assets/logo.png
+      - assets/adonim.png
+      - assets/background.jpg
+      - assets/cat2.jpg
+      - assets/cat3.jpg
   #   - images/a_dot_ham.jpeg
 
 

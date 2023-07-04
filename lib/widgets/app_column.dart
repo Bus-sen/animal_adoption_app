@@ -23,7 +23,7 @@ class AppColumn extends StatelessWidget {
                 children: List.generate(1, (index) {return Icon(Icons.favorite, color: Colors.red, size: Dimensions.font20);}) //favorilere ekleyen sayısı olabilir
             ),
             SizedBox(width: Dimensions.width10),
-            SmallText(text: "0000"),
+            SmallText(text: "15"),
             SizedBox(width: Dimensions.width10),
             SmallText(text: "kişinin favorilerinde")
           ],

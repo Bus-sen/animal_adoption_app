@@ -1,23 +1,27 @@
 import 'package:animal_app/pages/account/account_page.dart';
-import 'package:animal_app/pages/navpages/favourite_page.dart';
-import 'package:animal_app/pages/navpages/request_page.dart';
-import 'package:animal_app/pages/home/main_pet_page.dart';
+import 'package:animal_app/pages/adverts/add_advert.dart';
+import 'package:animal_app/pages/adverts/favorite_data_page.dart';
+import 'package:animal_app/pages/adverts/request_data_page.dart';
+import 'package:animal_app/pages/navpages/request_list.dart';
 import 'package:animal_app/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+import '../home/home_page.dart';
+import 'favorite_list.dart';
+
+class BottomNav extends StatefulWidget {
+  const BottomNav({Key? key}) : super(key: key);
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<BottomNav> createState() => _BottomNavState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _BottomNavState extends State<BottomNav> {
   List pages = [
-    MainPetPage(), //HomePage vardı
-    RequestPage(),
-    FavouritePage(),
+    HomePage(),
+    RequestListPage(),
+    FavoriteListPage(),
     AccountPage(),
   ];
   int currentIndex = 0;

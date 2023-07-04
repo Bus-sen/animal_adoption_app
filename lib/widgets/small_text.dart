@@ -8,8 +8,8 @@ class SmallText extends StatelessWidget {
   double height;
   SmallText({Key? key, this.color = Colors.black,
     required this.text,
-    this.size= 12,
-    this.height=1.2,
+    this.size= 14,
+    this.height=1.4,
   }) : super(key: key);
 
   @override
@@ -20,7 +20,7 @@ class SmallText extends StatelessWidget {
           fontFamily: 'Roboto ',
           fontSize: size,
           color: color,
-          height: height
+          height: height,
       ),
     );
   }

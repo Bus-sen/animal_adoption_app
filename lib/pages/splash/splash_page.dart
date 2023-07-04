@@ -1,7 +1,10 @@
 import 'dart:async';
 
+import 'package:animal_app/pages/navpages/bottom_nav.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../utils/dimensions.dart';
 
@@ -27,6 +30,11 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     animation = CurvedAnimation(
         parent: controller,
         curve: Curves.linear);
+    Timer(
+      const Duration(seconds: 3),
+            //()=>Get.offNamed(RouteHelper.getInitial())
+        ()=>Navigator.push(context, CupertinoPageRoute(builder: (_)=>BottomNav()))
+    );
   }
 
   @override
