@@ -15,14 +15,13 @@ import '../navpages/bottom_nav.dart';
 
 class AddAdvertPage extends StatefulWidget {
 
-  var _adverts;
-  AddAdvertPage(this._adverts);
-
   @override
   State<AddAdvertPage> createState() => _AddAdvertPageState();
 }
 
 class _AddAdvertPageState extends State<AddAdvertPage> {
+
+  var _firestoreInstance = FirebaseFirestore.instance;
 
   static const List<String> gender = <String>['Female', 'Male'];
   static const List<String> tur = <String>['Kedi', 'Köpek', 'Kuş', 'Balık', 'Tavşan'];
@@ -50,8 +49,6 @@ class _AddAdvertPageState extends State<AddAdvertPage> {
   var descriptionController = TextEditingController();
 
   sendUserDataDB()async{
-    final FirebaseAuth _auth = FirebaseAuth.instance;
-    var  currentUser = _auth.currentUser;
 
     CollectionReference _collectionRef = FirebaseFirestore.instance.collection("adverts");
     return _collectionRef.add({
@@ -64,25 +61,6 @@ class _AddAdvertPageState extends State<AddAdvertPage> {
     }).then((value) => Navigator.push(context,
         MaterialPageRoute(builder: (_)=>BottomNav()))).catchError((error)=>print("Bir şeyler yanlış gitti. $error"));
   }
-
-  /*Future addAdvert() async {
-    final FirebaseAuth _auth = FirebaseAuth.instance;
-    var currentUser = _auth.currentUser;
-    CollectionReference _collectionRef =
-    FirebaseFirestore.instance.collection("uploaded adverts");
-    return _collectionRef.doc(currentUser?.email)
-        .collection("items")
-        .doc()
-        .set({
-      "name":widget._adverts["adverts-name"],
-      "sci_name":widget._adverts["adverts-sci_name"],
-      "imageUrl":widget._adverts["adverts-img"],
-      "gender":widget._adverts["adverts-gender"],
-      "age":widget._adverts["adverts-age"],
-      "location":widget._adverts["adverts-location"],
-      "description":widget._adverts["adverts-description"],
-    }).then((value) => print("İlan kaydedildi"));
-  }*/
 
   PlatformFile? pickedFile;
   UploadTask? uploadTask;
@@ -107,13 +85,27 @@ class _AddAdvertPageState extends State<AddAdvertPage> {
 
     final snapshot =  await uploadTask!.whenComplete(() => {});
 
-    final urlDownload = await snapshot.ref.getDownloadURL();
-    print("Download link: $urlDownload");
+    final url = await snapshot.ref.getDownloadURL();
+    print("Download link: $url");
 
     setState(() {
       uploadTask = null;
     });
+
   }
+
+  /*writeUrl(imageUrl) async{
+    _firestoreInstance.collection("images").add({"url": imageUrl}).whenComplete(()
+    => print("$imageUrl kaydedildi") );
+  }*/
+
+  /*saveUrl(UploadTask task) async {
+    task.snapshotEvents.listen((snapshot) {
+      if(snapshot.state == TaskState.success){
+        snapshot.ref.getDownloadURL().then((imageUrl) => writeUrl(imageUrl));
+      }
+    });
+  }*/
 
   Widget buildProgress() => StreamBuilder<TaskSnapshot>(
       stream: uploadTask?.snapshotEvents,
@@ -324,6 +316,8 @@ class _AddAdvertPageState extends State<AddAdvertPage> {
                             onPressed: (){
                               sendUserDataDB();
                               uploadFile();
+                              /*Navigator.push(context,
+                                  MaterialPageRoute(builder: (context)=> ImageUpload(userId: id,)));*/
                             },
                             child: BigText(text: "Kaydet",
                               size: Dimensions.font20 + Dimensions.font20/2,
