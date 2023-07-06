@@ -34,14 +34,12 @@ class Animal {
 });
 }
 class HomePage extends StatefulWidget {
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   int selectedAnimalIconIndex = 0;
-
   List<String> _images = [];
   List _adverts = [];
   var _firestoreInstance = FirebaseFirestore.instance;
@@ -68,23 +66,13 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       for(int i=0; i<qn.docs.length; i++){
         _images.add(
-          qn.docs[i]["img-path"],
+          qn.docs[i]["url"],
         );
-        print(qn.docs[i]["img-path"]);
+        print(qn.docs[i]["url"]);
       }
     });
     return qn.docs;
   }
-
-  //resimler
-  /*fetchUploadImages() async{
-    final storage = FirebaseStorage.instance;
-    final ref = storage.ref().child("");
-    final url = await ref.getDownloadURL();
-    setState(() {
-      imageUrl=url;
-    });
-  }*/
 
   //ilanlar
   fetchAdverts() async{
@@ -98,7 +86,7 @@ class _HomePageState extends State<HomePage> {
           "adverts-location":qn.docs[i]["adverts-location"],
           "adverts-sci_name":qn.docs[i]["adverts-sci_name"],
           "adverts-description":qn.docs[i]["adverts-description"],
-          "adverts-img":qn.docs[i]["adverts-img"],
+          //"adverts-img":qn.docs[i]["adverts-img"],
         });
       }
     });
@@ -217,7 +205,7 @@ class _HomePageState extends State<HomePage> {
                               child: RichText(
                                 text: TextSpan(
                                   recognizer: TapGestureRecognizer()
-                                    ..onTap = () => Get.to(() => AddAdvertPage(AddAdvertPage)),
+                                    ..onTap = () => Get.to(() => AddAdvertPage()),
                                   text: "İLAN VER",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -260,7 +248,7 @@ class _HomePageState extends State<HomePage> {
                                   child: Stack(
                                     alignment: Alignment.center,
                                     children: [
-                                      AspectRatio(
+                                      /*AspectRatio(
                                         aspectRatio: 3.5,
                                         child: CarouselSlider(
                                           items: _images.map((item) => Padding(
@@ -280,7 +268,7 @@ class _HomePageState extends State<HomePage> {
                                               enlargeCenterPage: true
                                           ),
                                         ),
-                                      ),
+                                      ),*/
                                       Material(
                                         borderRadius: BorderRadius.circular(10.0),
                                         elevation: 5.0,
@@ -305,6 +293,24 @@ class _HomePageState extends State<HomePage> {
                                                         mainAxisSize:
                                                         MainAxisSize.max,
                                                         children: [
+                                                          /*CarouselSlider(
+                                                              items: _images.map((item) => Padding(
+                                                                padding: EdgeInsets.only(right: 5, left: 5),
+                                                                child: Container(
+                                                                  decoration: BoxDecoration(
+                                                                    image: DecorationImage(
+                                                                      image: NetworkImage(item),
+                                                                      fit: BoxFit.fitWidth
+                                                                      )
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ).toList(),
+                                                              options: CarouselOptions(
+                                                                autoPlay: false,
+                                                                enlargeCenterPage: true
+                                                                )
+                                                              ),*/
                                                           SizedBox(width: Dimensions.width10*3),
                                                           Text(
                                                             "${_adverts[index]["adverts-name"]}",
@@ -383,50 +389,21 @@ class _HomePageState extends State<HomePage> {
                                             height: Dimensions.height20,
                                             //width: deviceWidth * 0.4,
                                           ),
-                                          AspectRatio(
-                                            aspectRatio: 3.5,
-                                            child: CarouselSlider(
-                                              items: _images.map((item) => Padding(
-                                                padding: EdgeInsets.only(right: 5, left: 5),
-                                                child: Container(
-                                                  decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                      image: NetworkImage(item),
-                                                      fit: BoxFit.fitWidth
-                                                    )
-                                                  ),
-                                                ),
-                                              )).toList(),
-                                              options: CarouselOptions(
-                                                autoPlay: false,
-                                                enlargeCenterPage: true
-                                              ),
-                                            ),
-                                          )
-                                          /*AspectRatio(
-                                              aspectRatio: 3.5,
-                                            child: CarouselSlider(
-                                              items: _images.map((item) => Padding(
-                                                  padding: EdgeInsets.only(right: 5, left: 5),
-                                                child: Container(
-                                                  decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                      image: NetworkImage(item),
-                                                      fit: BoxFit.fitWidth
-                                                    )
-                                                  ),
-                                                ),
-                                              )).toList(),
-                                              options: CarouselOptions(
-                                                autoPlay: false,
-                                                enlargeCenterPage: true
-                                              ),
-                                            ),
-                                          ),*/
                                           /*Hero(
                                             tag: _adverts[index]["adverts-name"],
                                             child: Container(
-                                              child: Image.network(_adverts[index]["adverts-img"][0]),
+                                              child: Image(image: AssetImage("assets/cat.jpg"),),
+                                              /*child: Card(
+                                                child: Column(
+                                                  children: [
+                                                    AspectRatio(aspectRatio: 3,
+                                                      child: Container(
+                                                        child: Image.network(_images.first),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),*/
                                               height: Dimensions.listViewImgSize,
                                               //fit: BoxFit.fitHeight,
                                               width: Dimensions.listViewImgSize,
