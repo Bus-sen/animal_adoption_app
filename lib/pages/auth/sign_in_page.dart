@@ -1,5 +1,7 @@
-import 'package:animal_app/base/custom_loader.dart';
+import 'package:animal_app/pages/auth/shelter_sign_in_page.dart';
+import 'package:animal_app/pages/auth/shelter_sign_up_page.dart';
 import 'package:animal_app/pages/auth/sign_up_page.dart';
+import 'package:animal_app/pages/navpages/bottom_nav.dart';
 import 'package:animal_app/utils/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,13 +10,10 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import '../../base/show_custom_snackbar.dart';
-import '../../controllers/auth_controller.dart';
 import '../../utils/dimensions.dart';
 import '../../widgets/app_text_field.dart';
 import '../../widgets/big_text.dart';
-import '../home/home_page.dart';
-import '../navpages/bottom_nav.dart';
+
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -27,34 +26,13 @@ class _SignInPageState extends State<SignInPage> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
 
-  void _login(AuthController authController){
-    String email = emailController.text.trim();
-    String password = passwordController.text.trim();
 
-    if(email.isEmpty){
-      showCustomSnackbar("Lütfen mail adresinizi yazınız.", title: "Email Error!");
-    } else if(!GetUtils.isEmail(email)){
-      showCustomSnackbar("Lütfen geçerli bir mail adresi yazınız.", title: "Valid Email Error!");
-    } else if(password.isEmpty){
-      showCustomSnackbar("Lütfen şifrenizi giriniz.", title: "Password Error!");
-    } else if(password.length<6){
-      showCustomSnackbar("Şifre 6 karakterden az olamaz.", title: "Min Password Error!");
-    } else if(password.length>8){
-      showCustomSnackbar("Şifre 8 karakterden fazla olamaz.", title: "Max Password Error!");
-    } else {
-      //showCustomSnackbar("Kayıt Başarılı", title: "Perfect!");
-
-      authController.login(email, password).then((status){
-        if(status.isSuccess){
-          //Get.toNamed(RouteHelper.getInitial());
-        } else {
-          showCustomSnackbar(status.message);
-        }
-      });
-    }
+  setData (){
+    Navigator.pushReplacement(context,
+        MaterialPageRoute(builder: (context)=> BottomNav()));
   }
 
-  signIn() async {
+  /*signIn() async {
     try {
       UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text,
@@ -79,7 +57,7 @@ class _SignInPageState extends State<SignInPage> {
     } catch (e) {
       print(e);
     }
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +147,7 @@ class _SignInPageState extends State<SignInPage> {
                 child: Center(
                     child: ElevatedButton(
                       onPressed: () {
-                        signIn();
+                        setData();
                       },
                       child: BigText(
                           text: "Giriş Yap",
@@ -196,7 +174,19 @@ class _SignInPageState extends State<SignInPage> {
                       fontSize: Dimensions.font20
                   ),
                 )
-            )
+            ),
+            SizedBox(height: Dimensions.height10),
+            RichText(
+                text: TextSpan(
+                    recognizer: TapGestureRecognizer()..onTap=()=>Get.to(()=>ShelterSignInPage()),
+                    text: "Barınak hesabı mısınız?",
+                    style: TextStyle(
+                        color: Colors.grey[700],
+                        fontSize: Dimensions.font20,
+                        fontWeight: FontWeight.bold
+                    )
+                )
+            ),
           ],
         ),
       ),

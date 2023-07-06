@@ -1,3 +1,4 @@
+import 'package:animal_app/pages/auth/shelter_sign_up_page.dart';
 import 'package:animal_app/pages/auth/sign_in_page.dart';
 import 'package:animal_app/utils/colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -74,6 +75,7 @@ class _SignUpPageState extends State<SignUpPage> {
       });
     }
   }*/
+
     sendUserDataDB()async{
       final FirebaseAuth _auth = FirebaseAuth.instance;
       var  currentUser = _auth.currentUser;
@@ -86,8 +88,28 @@ class _SignUpPageState extends State<SignUpPage> {
         "address":addressController.text,
         "password":passwordController.text,
       }).then((value) => Navigator.push(context,
-          MaterialPageRoute(builder: (_)=>HomePage()))).catchError((error)=>print("Bir şeyler yanlış gitti. $error"));
+          MaterialPageRoute(builder: (_)=>BottomNav()))).catchError((error)=>print("Bir şeyler yanlış gitti. $error"));
     }
+
+    /*postDetailsFirestore() async {
+      FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+      final FirebaseAuth _auth = FirebaseAuth.instance;
+      var  currentUser = _auth.currentUser;
+      User? user = _auth.currentUser;
+      UserModel userModel = UserModel();
+
+      userModel.email=user?.email;
+      userModel.id=user?.uid;
+      userModel.name=nameController.text;
+      userModel.surname=surnameController.text;
+      userModel.address=addressController.text;
+
+      await firebaseFirestore.collection("user registration data").
+      doc(user?.uid).set(userModel.toMap());
+      print("başarılı");
+      
+      Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
+    }*/
 
 
   @override
