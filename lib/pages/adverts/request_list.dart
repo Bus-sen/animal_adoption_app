@@ -1,25 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import '../../utils/colors.dart';
 import '../../utils/dimensions.dart';
 import '../../widgets/big_text.dart';
 import '../home/adverts_detail.dart';
 
-class FavoriteListPage extends StatefulWidget {
-  const FavoriteListPage({Key? key}) : super(key: key);
+class RequestListPage extends StatefulWidget {
+  const RequestListPage({super.key});
 
   @override
-  State<FavoriteListPage> createState() => _FavoriteListPageState();
+  State<RequestListPage> createState() => _RequestListPageState();
 }
 
-class _FavoriteListPageState extends State<FavoriteListPage> {
-
+class _RequestListPageState extends State<RequestListPage> {
   List _adverts = [];
 
-  fetchAdverts() async{
-    QuerySnapshot qn = await FirebaseFirestore.instance.collection("favorites").get();
+  fetchReqAdverts() async{
+    QuerySnapshot qn = await FirebaseFirestore.instance.collection("requests").get();
     setState(() {
       for(int i=0; i<qn.docs.length; i++){
         _adverts.add({
@@ -29,7 +27,7 @@ class _FavoriteListPageState extends State<FavoriteListPage> {
           "adverts-location":qn.docs[i]["adverts-location"],
           "adverts-sci_name":qn.docs[i]["adverts-sci_name"],
           "adverts-description":qn.docs[i]["adverts-description"],
-          "adverts-img":qn.docs[i]["adverts-img"],
+          //"adverts-img":qn.docs[i]["adverts-img"],
         });
       }
     });
@@ -37,7 +35,7 @@ class _FavoriteListPageState extends State<FavoriteListPage> {
   }
 
   void initState(){
-    fetchAdverts();
+    fetchReqAdverts();
     super.initState();
   }
 
@@ -48,7 +46,7 @@ class _FavoriteListPageState extends State<FavoriteListPage> {
         backgroundColor: AppColors.iconColor3,
         title: Center(
           child: BigText(
-            text: "Favorilerim", size: 24, color: Colors.white,
+            text: "İsteklerim", size: 24, color: Colors.white,
           ),
         ),
       ),
@@ -184,7 +182,8 @@ class _FavoriteListPageState extends State<FavoriteListPage> {
                                           Hero(
                                             tag:  _adverts[index]["adverts-name"],
                                             child: Container(
-                                              child: Image.network(_adverts[index]["adverts-img"][0]),
+                                              //child: Image.network(_adverts[index]["adverts-img"][0]),
+                                              child: Image(image: AssetImage("assets/cat.jpg"),),
                                               height: Dimensions.listViewImgSize,
                                               //fit: BoxFit.fitHeight,
                                               width: Dimensions.listViewImgSize,
