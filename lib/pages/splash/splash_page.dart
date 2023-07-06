@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:animal_app/pages/auth/sign_in_page.dart';
 import 'package:animal_app/pages/navpages/bottom_nav.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     Timer(
       const Duration(seconds: 3),
             //()=>Get.offNamed(RouteHelper.getInitial())
-        ()=>Navigator.push(context, CupertinoPageRoute(builder: (_)=>BottomNav()))
+        ()=>Navigator.push(context, CupertinoPageRoute(builder: (_)=>SignInPage()))
     );
   }
 

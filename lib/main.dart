@@ -1,15 +1,11 @@
 import 'package:animal_app/pages/account/account_page.dart';
-import 'package:animal_app/pages/adverts/popular_adverts_detail.dart';
-import 'package:animal_app/pages/auth/giris_yap.dart';
 import 'package:animal_app/pages/home/adverts_detail.dart';
 import 'package:animal_app/pages/home/home_page.dart';
 import 'package:animal_app/pages/home/search_screen.dart';
-import 'package:animal_app/pages/adverts/favorite_data_page.dart';
 import 'package:animal_app/pages/auth/sign_in_page.dart';
 import 'package:animal_app/pages/auth/sign_up_page.dart';
 import 'package:animal_app/pages/navpages/bottom_nav.dart';
-import 'package:animal_app/pages/navpages/storage.dart';
-import 'package:animal_app/pages/navpages/favorite_list.dart';
+import 'package:animal_app/pages/adverts/favorite_list.dart';
 import 'package:animal_app/pages/splash/splash_page.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -43,7 +39,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: BottomNav(), //giriş sayfası bu değil-değişecek
+      home: SplashScreen(), //giriş sayfası bu değil-değişecek
       //initialRoute: RouteHelper.getSplashPage(),
       //getPages: RouteHelper.routes,
     );
