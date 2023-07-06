@@ -1,14 +1,12 @@
 import 'package:animal_app/pages/account/account_page.dart';
 import 'package:animal_app/pages/adverts/add_advert.dart';
-import 'package:animal_app/pages/adverts/favorite_data_page.dart';
-import 'package:animal_app/pages/adverts/request_data_page.dart';
-import 'package:animal_app/pages/navpages/request_list.dart';
+import 'package:animal_app/pages/adverts/request_list.dart';
 import 'package:animal_app/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../home/home_page.dart';
-import 'favorite_list.dart';
+import '../adverts/favorite_list.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({Key? key}) : super(key: key);
